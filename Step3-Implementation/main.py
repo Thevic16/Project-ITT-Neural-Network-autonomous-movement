@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 # from tensorflow import keras
 
-#from keras.models import load_model
+# from keras.models import load_model
 
 #from tensorflow import keras 
 
@@ -13,9 +13,9 @@ from picamera import PiCamera
 import time
 
 
-model = load_model('/home/pi/Proyecto Final ITT/9-Project-ITT-Neural-Network-autonomous-movement/Step2-Training/model.h5')
+model = load_model('/home/pi/Proyecto-Final-ITT/9-Project-ITT-Neural-Network-autonomous-movement/Step2-Training/model.h5', compile = False)
 
-'''
+
 def preProcess(img):
     img = img[54:120, :, :]
     img = cv2.cvtColor(img, cv2.COLOR_RGB2YUV)
@@ -41,7 +41,9 @@ if __name__ == '__main__':
     img = preProcess(img)
     img = np.array([img])
     direction = float(model.predict(img))
+    
     print(direction)
-
- '''   
+    
+    print(round(direction))
+  
 
