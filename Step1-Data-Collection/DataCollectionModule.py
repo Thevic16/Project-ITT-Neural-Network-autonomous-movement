@@ -28,7 +28,7 @@ import json
 q = queue.Queue()
 
 # Set up serialPorts.
-# serialPortSTM32 = serial.Serial(port="/dev/ttyACM0", baudrate=9600,bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+serialPortSTM32 = serial.Serial(port="/dev/ttyACM0", baudrate=9600,bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
 
 #Functions that will be use in the Speech Recognition module
 def int_or_str(text):
@@ -176,22 +176,22 @@ def speech_recognition_thread():
                         # Conditions.
                         if "sofía" in text_str and "delante"  in text_str:
                             saveDataAndLog(1)
-                            #serialPortSTM32.write(b"w \r\n")
+                            serialPortSTM32.write(b"w \r\n")
                             print("Comando de voz hacia adelante")
                             
                         elif "sofía" in text_str and "derecha" in text_str:
                             saveDataAndLog(-2)
-                            #serialPortSTM32.write(b"d \r\n")
+                            serialPortSTM32.write(b"d \r\n")
                             print("Comando de voz hacia la derecha")
             
                         elif "sofía" in text_str and "atrás" in text_str:
                             saveDataAndLog(-1)
-                            #serialPortSTM32.write(b"s \r\n")
+                            serialPortSTM32.write(b"s \r\n")
                             print("Comando de voz hacia atras")
                             
                         elif "sofía" in text_str and "izquierda" in text_str:
                             saveDataAndLog(2)
-                            #serialPortSTM32.write(b"a \r\n")
+                            serialPortSTM32.write(b"a \r\n")
                             print("Comando de voz hacia la izquierda")
                         elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
                             saveLog()
