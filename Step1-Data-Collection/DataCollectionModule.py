@@ -91,6 +91,7 @@ def saveLog():
 def saveDataAndLog(direction):
         # initialize the camera and grab a reference to the raw camera capture
         camera = PiCamera()
+        camera.rotation = 90
         rawCapture = PiRGBArray(camera)
         # allow the camera to warmup
         time.sleep(2)
@@ -194,6 +195,7 @@ def speech_recognition_thread():
                             serialPortSTM32.write(b"a \r\n")
                             print("Comando de voz hacia la izquierda")
                         elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
+                            saveDataAndLog(10)
                             saveLog()
                             return
                         
