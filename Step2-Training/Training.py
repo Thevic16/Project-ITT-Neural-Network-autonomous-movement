@@ -23,7 +23,7 @@ imagesPath, directions = loadData(path,data)
 
 #### STEP 4 - SPLIT FOR TRAINING AND VALIDATION
 xTrain, xVal, yTrain, yVal = train_test_split(imagesPath, directions,
-                                              test_size=0.5,random_state=10)
+                                              test_size=0.2,random_state=10)
 print('Total Training Images: ',len(xTrain))
 print('Total Validation Images: ',len(xVal))
 
