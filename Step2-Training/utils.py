@@ -86,21 +86,21 @@ def loadData(path, data):
 
 
 #### STEP 5 - AUGMENT DATA
-def augmentImage(imgPath,steering):
-    img =  mpimg.imread(imgPath)
-    if np.random.rand() < 0.5:
-        pan = iaa.Affine(translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)})
-        img = pan.augment_image(img)
-    if np.random.rand() < 0.5:
-        zoom = iaa.Affine(scale=(1, 1.2))
-        img = zoom.augment_image(img)
+def augmentImage(imgPath,direction):
+    img = mpimg.imread(imgPath)
+    # if np.random.rand() < 0.5:
+    #     pan = iaa.Affine(translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)})
+    #     img = pan.augment_image(img)
+    # if np.random.rand() < 0.5:
+    #     zoom = iaa.Affine(scale=(1, 1.2))
+    #     img = zoom.augment_image(img)
     if np.random.rand() < 0.5:
         brightness = iaa.Multiply((0.5, 1.2))
         img = brightness.augment_image(img)
-    if np.random.rand() < 0.5:
-        img = cv2.flip(img, 1)
-        steering = -steering
-    return img, steering
+    # if np.random.rand() < 0.5:
+    #     img = cv2.flip(img, 1)
+    #     steering = -steering
+    return img, direction
 
 # imgRe,st = augmentImage('DataCollected/IMG18/Image_1601839810289305.jpg',0)
 # #mpimg.imsave('Result.jpg',imgRe)
