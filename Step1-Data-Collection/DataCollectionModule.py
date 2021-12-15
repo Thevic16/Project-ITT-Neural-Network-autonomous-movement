@@ -96,7 +96,7 @@ def saveDataAndLog(direction):
         #camera.crop = (0.0, 0.0, 0.6, 0.95)
         rawCapture = PiRGBArray(camera)
         # allow the camera to warmup#
-        time.sleep(2)
+        time.sleep(0.2)
         # grab an image from the camera
         camera.capture(rawCapture, format="bgr")
         image = rawCapture.array
@@ -182,24 +182,58 @@ def speech_recognition_thread():
                         if "sofía" in text_str and "delante"  in text_str:
                             saveDataAndLog(0)
                             serialPortSTM32.write(b"w \r\n")
+                            
+                            start=time.time()
+                            end=0
+                            while((end - start) < 2):
+                                saveDataAndLog(0)
+                                end = time.time()
+                                    
                             print("Comando de voz hacia adelante")
                             
                         elif "sofía" in text_str and "derecha" in text_str:
                             saveDataAndLog(3)
                             serialPortSTM32.write(b"d \r\n")
+                            
+                            start=time.time()
+                            end=0
+                            while((end - start) < 0.5):
+                                saveDataAndLog(3)
+                                end = time.time()
+                                
                             print("Comando de voz hacia la derecha")
             
                         elif "sofía" in text_str and "atrás" in text_str:
                             saveDataAndLog(1)
                             serialPortSTM32.write(b"s \r\n")
+                            
+                            start=time.time()
+                            end=0
+                            while((end - start) < 0.5):
+                                saveDataAndLog(1)
+                                end = time.time()
+                            
                             print("Comando de voz hacia atras")
                             
                         elif "sofía" in text_str and "izquierda" in text_str:
                             saveDataAndLog(2)
                             serialPortSTM32.write(b"a \r\n")
+                            
+                            start=time.time()
+                            end=0
+                            while((end - start) < 0.5):
+                                saveDataAndLog(2)
+                                end = time.time()
+                            
                             print("Comando de voz hacia la izquierda")
+                            
                         elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
-                            saveDataAndLog(4)
+                            start=time.time()
+                            end=0
+                            while((end - start) < 4):
+                                saveDataAndLog(4)
+                                end = time.time()
+                            
                             saveLog()
                             return
                         
