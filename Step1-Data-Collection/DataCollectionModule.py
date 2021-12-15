@@ -92,12 +92,16 @@ def saveDataAndLog(direction):
         # initialize the camera and grab a reference to the raw camera capture
         camera = PiCamera()
         camera.rotation = 90
+        #camera.resolution = (900, 540)
+        #camera.crop = (0.0, 0.0, 0.6, 0.95)
         rawCapture = PiRGBArray(camera)
-        # allow the camera to warmup
+        # allow the camera to warmup#
         time.sleep(2)
         # grab an image from the camera
         camera.capture(rawCapture, format="bgr")
         image = rawCapture.array
+        #image = image[300:1744,200:2592]
+        image = image[500:1744,400:2592] # Resolucion ajustada 15-12-2021
         camera.close()
 
         saveData(image, direction)
@@ -207,6 +211,7 @@ def speech_recognition_thread():
         parser.exit(0)
     except Exception as e:
         parser.exit(type(e).__name__ + ': ' + str(e))
+        print(e)
 
 
 #////////////////////////////////////////////////////////////////////////////////////////////
