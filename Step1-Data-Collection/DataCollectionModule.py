@@ -100,8 +100,8 @@ def saveDataAndLog(direction):
         # grab an image from the camera
         camera.capture(rawCapture, format="bgr")
         image = rawCapture.array
-        #image = image[300:1744,200:2592]
-        image = image[500:1744,400:2592] # Resolucion ajustada 15-12-2021
+        image = image[500:1944,0:2592]
+        #image = image[500:1744,400:2592] # Resolucion ajustada 15-12-2021
         camera.close()
 
         saveData(image, direction)
@@ -180,17 +180,17 @@ def speech_recognition_thread():
                     if text_str != past_text_str:
                         # Conditions.
                         if "sofía" in text_str and "delante"  in text_str:
-                            saveDataAndLog(1)
+                            saveDataAndLog(0)
                             serialPortSTM32.write(b"w \r\n")
                             print("Comando de voz hacia adelante")
                             
                         elif "sofía" in text_str and "derecha" in text_str:
-                            saveDataAndLog(-2)
+                            saveDataAndLog(3)
                             serialPortSTM32.write(b"d \r\n")
                             print("Comando de voz hacia la derecha")
             
                         elif "sofía" in text_str and "atrás" in text_str:
-                            saveDataAndLog(-1)
+                            saveDataAndLog(1)
                             serialPortSTM32.write(b"s \r\n")
                             print("Comando de voz hacia atras")
                             
@@ -199,7 +199,7 @@ def speech_recognition_thread():
                             serialPortSTM32.write(b"a \r\n")
                             print("Comando de voz hacia la izquierda")
                         elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
-                            saveDataAndLog(10)
+                            saveDataAndLog(4)
                             saveLog()
                             return
                         
