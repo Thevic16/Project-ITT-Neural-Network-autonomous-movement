@@ -100,7 +100,7 @@ def saveDataAndLog(direction):
         # grab an image from the camera
         camera.capture(rawCapture, format="bgr")
         image = rawCapture.array
-        image = image[500:1944,0:2592]
+        #image = image[500:1944,0:2592]
         #image = image[500:1744,400:2592] # Resolucion ajustada 15-12-2021
         camera.close()
 
