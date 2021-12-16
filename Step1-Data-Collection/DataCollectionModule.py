@@ -191,10 +191,10 @@ def speech_recognition_thread():
                             
                         elif "sofía" in text_str and "derecha" in text_str:
                             saveDataAndLog(0.1)
-                            serialPortSTM32.write(b"d \r\n")
+                            #serialPortSTM32.write(b"d \r\n")
                             start=time.time()
                             end=0
-                            while((end - start) < 0.5):
+                            while((end - start) < 2):
                                 saveDataAndLog(0.1)
                                 end = time.time()
                             print("Comando de voz hacia la derecha")
@@ -211,20 +211,23 @@ def speech_recognition_thread():
                             
                         elif "sofía" in text_str and "izquierda" in text_str:
                             saveDataAndLog(0.4)
-                            serialPortSTM32.write(b"a \r\n")
+                            #serialPortSTM32.write(b"a \r\n")
                             start=time.time()
                             end=0
-                            while((end - start) < 0.5):
+                            while((end - start) < 2):
                                 saveDataAndLog(0.4)
                                 end = time.time()
                             print("Comando de voz hacia la izquierda")
                             
-                        elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
+                        elif ("sofía" in text_str and "final" in text_str):
                             start=time.time()
                             end=0
                             while((end - start) < 4):
                                 saveDataAndLog(0.2)
                                 end = time.time()
+                            print("Comando de voz final")
+
+                        elif ("sofía" in text_str and "deten" in text_str) or ("sofía" in text_str and "párate" in text_str) or ("sofía" in text_str and "alto" in text_str):
                             saveLog()
                             return
                         
