@@ -36,11 +36,11 @@ print('Total Validation Images: ',len(xVal))
 model = createModel()
 
 #### STEP 8 - TRAINNING
-history = model.fit(dataGen(xTrain, yTrain, 100, 1),
-                                  steps_per_epoch=100,
-                                  epochs=10,
-                                  validation_data=dataGen(xVal, yVal, 50, 0),
-                                  validation_steps=50)
+history = model.fit(dataGen(xTrain, yTrain, 1, 1),
+                                  steps_per_epoch=10,
+                                  epochs=1,
+                                  validation_data=dataGen(xVal, yVal, 5, 0),
+                                  validation_steps=5)
 
 
 #### STEP 9 - SAVE THE MODEL
